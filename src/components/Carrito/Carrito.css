@@ -1,0 +1,13 @@
+.contenedor-carrito {
+  width: 190px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .contenedor-carrito {
+    width: 40px;
+  }
+}
