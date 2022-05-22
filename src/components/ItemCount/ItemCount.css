@@ -1,0 +1,17 @@
+.item-count-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-count {
+  margin: 0 5px;
+}
+
+.button-count {
+  width: 30px;
+  height: auto;
+}

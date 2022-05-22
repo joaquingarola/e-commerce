@@ -1,8 +1,6 @@
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import logo from '../../imagenes/logo.png';
-import Carrito from '../Carrito/Carrito.js'
+import Cart from '../Cart/Cart.js'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -19,7 +17,7 @@ const NavBar = () => {
             <Nav.Link href="#FAQ">FAQ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand href="#Carrito" className='p-0'> <Carrito /> </Navbar.Brand>
+        <Navbar.Brand href="#Cart" className='p-0'> <Cart /> </Navbar.Brand>
       </Container>
     </Navbar>
   );

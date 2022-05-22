@@ -1,0 +1,10 @@
+.item-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-list>h1{
+  margin-top: 15px;
+  text-align: center;
+}
+

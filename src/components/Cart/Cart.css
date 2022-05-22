@@ -1,4 +1,4 @@
-.contenedor-carrito {
+.contenedor-cart {
   width: 190px;
   height: 40px;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 1200px) {
-  .contenedor-carrito {
+  .contenedor-cart {
     width: 40px;
   }
 }
