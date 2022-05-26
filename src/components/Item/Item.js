@@ -1,6 +1,5 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
-import ItemCount from '../ItemCount/ItemCount.js';
 import './Item.css';
 
 const Item = ( {title, price, image, description, stock} ) => {
@@ -11,11 +10,11 @@ const Item = ( {title, price, image, description, stock} ) => {
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle className="mb-2">$ {price}</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
-        <ItemCount 
+        {/* <ItemCount 
           stock={stock}
           initial={(stock >= 1) ? 1 : stock}
-        />
-        <Button variant="primary">Comprar</Button>
+        /> */}
+        <Button variant="primary">Más detalles</Button>
       </Card.Body>
     </Card> 
   );
