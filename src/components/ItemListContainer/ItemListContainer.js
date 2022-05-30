@@ -3,7 +3,7 @@ import ItemList from '../ItemList/ItemList.js';
 import { getProducts } from '../../utils/productsMock.js';
 import './ItemListContainer.css';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ title }) => {
 
   const [products, setProducts] = useState([])
   
@@ -21,7 +21,7 @@ const ItemListContainer = () => {
   return(
     <div className='item-list-container container'>
         <ItemList 
-          title = 'Productos recomendados'
+          title = {title}
           products = {products}
         />
     </div>

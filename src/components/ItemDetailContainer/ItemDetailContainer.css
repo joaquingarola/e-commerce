@@ -1,3 +1,7 @@
 .item-detail-container {
   text-align: center;
 }
+
+.item-detail-container>h1 {
+  margin-top: 15px;
+}

@@ -7,15 +7,15 @@ const ItemList = ({ title, products }) => {
     <div className='item-list row'>
       <h1 className='title-list'>{title}</h1>
       {
-        products.map( ({title, price, image, description, stock, id}) => {
+        products.map( ({title, price, image, sumary, id}) => {
           return(
             <Item 
               key={id}
               title={title} 
               price={price} 
               image={image} 
-              description={description} 
-              stock={stock}
+              sumary={sumary} 
+              id={id}
             />
           )
         })

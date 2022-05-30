@@ -1,0 +1,52 @@
+.size-list{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.size-item {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(131, 131, 131);
+  border-radius: 10px;
+  margin: 0 5px;
+  position: relative;
+}
+
+.size-item:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
+
+.size-item::after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 2.5px;
+  background-color: rgb(119, 119, 119);
+  left: 50%;
+  bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.size-item:hover::after{
+  cursor: pointer;
+  width:50%;
+  left: 10px;
+}
+
+.size-text {
+  height: 1.5em;
+  margin-top: 5px;
+}
+
+.size-item.selected {
+  background-color: rgb(201, 201, 201);
+}
+
+.size-title {
+  width: 100%;
+  text-align: center;
+}

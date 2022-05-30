@@ -1,0 +1,25 @@
+.card-detail {
+  display: flex;
+  flex-flow: row wrap !important;
+  justify-content: center;
+}
+
+.item-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.card-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.card-dues {
+  font-size: 0.9rem;
+  font-weight: 400;
+}

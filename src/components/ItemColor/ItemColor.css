@@ -1,0 +1,29 @@
+.color-list{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.color-title {
+  width: 100%;
+  text-align: center;
+}
+
+.color-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0 5px;
+  position: relative;
+}
+
+.color-item:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.color-item.selected {
+  border: 3.5px solid rgb(158, 158, 158);
+}

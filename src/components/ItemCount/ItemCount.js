@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './ItemCount.css';
+import { Button } from 'react-bootstrap';
 
 const ItemCount = ({ stock, initial }) => {
 
@@ -19,19 +20,19 @@ const ItemCount = ({ stock, initial }) => {
 
   return(
     <div className='item-count-container'>
-      <button 
+      <Button 
         disabled={stock === 0}
-        className='button-count'
+        variant="outline-dark"
         onClick={removeCount}>
         -
-      </button>
+      </Button>
       <p className='item-count'>{count}</p>
-      <button 
+      <Button 
         disabled={stock === 0}
-        className='button-count'
+        variant="outline-dark"
         onClick={addCount}>
         +
-      </button>
+      </Button>
     </div>
   );
 };

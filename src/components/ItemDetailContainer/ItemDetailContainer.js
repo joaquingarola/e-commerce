@@ -1,30 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import { getItem } from '../../utils/productsMock';
+import { useParams } from 'react-router-dom';
+import { productos } from '../../utils/productsMock.js';
 import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
   
+  const { id } = useParams();
   const [product, setProduct] = useState({});
   
+  const productFilter = productos.find( (product) => {
+    return product.id === Number(id);
+  })
+
   useEffect( () => {
-    getItem()
-    .then( (response) => {
-      setProduct(response)
-    })
-    .catch( (err) => {
-      /* console.log("Error: ", err) */
-    })
+    setProduct(productFilter)
   }, [])
   
   return(
     <div className='item-detail-container container'>
-      <h2>Producto seleccionado</h2>
-      <ItemDetail
-        item = {product}
-      />
-    </div>
+      <h1>Producto seleccionado</h1>
+      {Object.keys(product).length > 0 && <ItemDetail item={product} />}
+    </div> 
   );
 };
 
 export default ItemDetailContainer;
+
