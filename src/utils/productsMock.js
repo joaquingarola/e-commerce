@@ -1,4 +1,4 @@
-export const productos = [
+const productos = [
   {
     title : 'BUZO PROJECT ROCK',
     price : 11989,
@@ -34,18 +34,6 @@ export const productos = [
   },
 ];
 
-/* const item = {
-  title : 'BUZO PROJECT ROCK',
-  price : 11989,
-  image : '/1.jpg',
-  sumary : 'El equipo de entrenamiento de Project Rock se creó para ayudarte a superar tus límites.',
-  description: 'El equipo de entrenamiento de Project Rock se creó para ayudarte a encontrar límites y luego superarlos. Todo en esta colección fue aprobado personalmente por Dwayne Johnson, el trabajador más duro de la sala. Cualquier cuarto. French Terry tiene una capa exterior lisa y una capa interior cálida y suave. El material absorbe el sudor y se seca muy rápido. Bolsillos abiertos para las manos',
-  stock: 15,
-  size: ['S', 'M', 'L', 'XL', '2XL'],
-  color: ['darkslategrey', 'darkblue', 'darkolivegreen'],
-  id: 1
-}; */
-
 export const getProducts = () => {
   return new Promise( (resolve, reject) => {
     setTimeout(() => {
@@ -54,11 +42,18 @@ export const getProducts = () => {
   })
 };
 
-/* export const getItem = () => {
+export const getItem = (id) => {
   return new Promise( (resolve, reject) => {
     setTimeout(() => {
-      resolve(item)
-    }, 2000)
+      const product = productFilter(id);
+      resolve(product)
+    }, 1000)
   })
-}; */
+};
 
+const productFilter = (id) => {
+  const prod = productos.find( (p) => {
+    return p.id === Number(id);
+  })
+  return prod;
+}

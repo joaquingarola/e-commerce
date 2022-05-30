@@ -6,22 +6,22 @@ import Loader from '../Loader/Loader.js';
 
 const ItemListContainer = ({ title }) => {
 
-  const [load, setLoad] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [products, setProducts] = useState([])
   
   useEffect( () => {
-    setLoad(true);
+    setLoader(true);
     getProducts()
     .then( (response) => {
-        setProducts(response);
-        setLoad(false);
+      setProducts(response);
+      setLoader(false);
     })
     .catch( (err) => {
       /* console.log("Error: ", err) */
     })
   }, [])
 
-  if (load) {
+  if (loader) {
     return(
       <Loader />
     );
