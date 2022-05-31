@@ -8,6 +8,7 @@ const productos = [
     stock: 15,
     size: ['S', 'M', 'L', 'XL', '2XL'],
     color: ['darkslategrey', 'darkblue', 'darkolivegreen'],
+    category: 'buzos',
     id: 1
   },
   {
@@ -19,6 +20,7 @@ const productos = [
     stock: 5,
     size: ['S', 'M', 'L', 'XL', '2XL'],
     color: ['darkslategrey', 'darkblue', 'darkolivegreen', 'black'],
+    category: 'buzos',
     id: 2
   },
   {
@@ -30,8 +32,45 @@ const productos = [
     stock: 0,
     size: ['S', 'M', 'L', 'XL', '2XL'],
     color: ['darkslategrey', 'darkblue', 'darkolivegreen'],
+    category: 'buzos',
     id: 3
   },
+  {
+    title : 'PANTALON ESS SLIM PUMA',
+    price : 9000,
+    image : '/4.jpg',
+    sumary : 'Estos pantalones deportivos de inspiración urbana causan sensación.',
+    description: 'Confeccionados con tejidos excepcionales, presentan un corte ajustado y con estilo, y son ideales para no dejar de lado la sofisticación en los días de relax.',
+    stock: 3,
+    size: ['S', 'M', 'L', 'XL', '2XL'],
+    color: ['grey','darkslategrey', 'darkblue', 'darkolivegreen'],
+    category: 'pantalones',
+    id: 4
+  },
+  {
+    title : 'PANTALON NWS ESSENTIAL NIKE',
+    price : 12499,
+    image : '/5.jpg',
+    sumary : 'Pantalones deportivos confeccionados con suave tejido Fleece semicepillado.',
+    description: 'Los pantalones de tejido Fleece para mujer Nike Sportswear Essential te ofrecen la calidez que necesitas sin agregar volumen. Tienen puños de tela rib que te permiten lucir tu calzado.',
+    stock: 10,
+    size: ['S', 'M', 'L', 'XL'],
+    color: ['lightgoldenrodyellow', 'darkslategrey', 'darkblue', 'darkolivegreen'],
+    category: 'pantalones',
+    id: 5
+  },
+  {
+    title : 'REMERA TRAINING WORKOUT ADIDAS',
+    price : 13999,
+    image : '/6.jpg',
+    sumary : 'Sin límites, algo que tú y esta camiseta de entrenamiento de adidas tienen en común.',
+    description: 'Fue diseñado específicamente para fomentar la libertad de movimiento sin restricciones, lo cual es clave cuando lo estás dando todo. AEROREADY, que absorbe la humedad, lo mantiene enfocado en la meta del día, no en el calor del edificio. Los paneles de malla aireada debajo de los brazos duplican la comodidad y brindan transpirabilidad y alivio adicionales.',
+    stock: 25,
+    size: ['S', 'M', 'L', 'XL', '2XL'],
+    color: ['black', 'darkslategrey', 'white', 'darkolivegreen'],
+    category: 'remeras',
+    id: 6
+  }
 ];
 
 export const getProducts = () => {
@@ -45,8 +84,8 @@ export const getProducts = () => {
 export const getItem = (id) => {
   return new Promise( (resolve, reject) => {
     setTimeout(() => {
-      const product = productFilter(id);
-      resolve(product)
+      const item = productFilter(id);
+      resolve(item)
     }, 1000)
   })
 };
@@ -54,6 +93,22 @@ export const getItem = (id) => {
 const productFilter = (id) => {
   const prod = productos.find( (p) => {
     return p.id === Number(id);
+  })
+  return prod;
+}
+
+export const getItemByCategory = (cat) => {
+  return new Promise( (resolve, reject) => {
+    setTimeout(() => {
+      const products = categoryFilter(cat);
+      resolve(products)
+    }, 1000)
+  })
+};
+
+const categoryFilter = (cat) => {
+  const prod = productos.filter( (p) => {
+    return p.category === cat.toLowerCase();
   })
   return prod;
 }

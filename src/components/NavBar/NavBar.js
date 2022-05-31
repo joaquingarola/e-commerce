@@ -1,10 +1,12 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../imagenes/logo.png';
 import Cart from '../Cart/Cart.js'
 import './NavBar.css';
 
 const NavBar = () => {
+  const categories = ['Buzos', 'Remeras', 'Pantalones']
+
   return(
     <Navbar bg="light" expand="lg" className='pb-0'>
       <Container>
@@ -13,7 +15,11 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav" className='flex-grow-0'>
           <Nav className="ms-auto border-bottom-0" fill variant="tabs">
             <Nav.Link as={Link} to='/'> Inicio </Nav.Link>
-            <Nav.Link as={Link} to='/Productos'>Productos</Nav.Link>
+            <NavDropdown title="Productos" id="navbarScrollingDropdown">
+              {categories.map( (cat) => {
+                return <NavDropdown.Item as={Link} to={`/category/${cat}`} key={cat}>{cat}</NavDropdown.Item>   
+              })}
+            </NavDropdown>
             <Nav.Link as={Link} to='/Contacto' >Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>

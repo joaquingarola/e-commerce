@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getItem } from '../../utils/productsMock.js';
 import Loader from '../Loader/Loader.js';
 import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
   
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
   const [product, setProduct] = useState({});
@@ -15,13 +16,13 @@ const ItemDetailContainer = () => {
     setLoader(true);
     getItem(id)
     .then( (response) => {
-      setProduct(response)
+      (response === undefined) ? navigate('/notFound') : setProduct(response);
       setLoader(false);
     })
     .catch( (err) => {
       /* console.log("Error: ", err) */
     })
-  }, [])
+  }, [id])
   
   if(loader) {
     return(

@@ -7,6 +7,7 @@ const ItemList = ({ title, products }) => {
     <div className='item-list row'>
       <h1 className='title-list'>{title}</h1>
       {
+        Object.keys(products).length > 0 ?
         products.map( ({title, price, image, sumary, id}) => {
           return(
             <Item 
@@ -19,6 +20,8 @@ const ItemList = ({ title, products }) => {
             />
           )
         })
+        :
+        <h4 style={{textAlign: 'center'}}>No existen productos de esta categoría</h4>
       }
     </div>
   );
