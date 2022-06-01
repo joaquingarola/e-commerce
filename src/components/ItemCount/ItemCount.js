@@ -1,39 +1,48 @@
-import React, {useState} from 'react';
 import './ItemCount.css';
 import { Button } from 'react-bootstrap';
 
-const ItemCount = ({ stock, initial }) => {
-
-  const [count, setCount] = useState(initial);
+const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSize, selectedColor}) => {
 
   const addCount = () => {
     if(count < stock){
-      setCount(count + 1);
+      setCount(prev => prev + 1);
     }
   };
 
   const removeCount = () => {
     if(count > initial){
-      setCount(count - 1);
+      setCount(prev => prev - 1);
     }
   };
 
+  const hideOptions = () => {
+    setShowOptions(false)
+  }
+
   return(
-    <div className='item-count-container'>
+    <>
+      <div className='item-count-container'>
+        <Button 
+          disabled={stock === 0}
+          variant="outline-dark"
+          onClick={removeCount}>
+            -
+        </Button>
+        <p className='item-count'>{count}</p>
+        <Button 
+          disabled={stock === 0}
+          variant="outline-dark"
+          onClick={addCount}>
+            +
+        </Button>
+      </div>
       <Button 
-        disabled={stock === 0}
-        variant="outline-dark"
-        onClick={removeCount}>
-        -
+        disabled={stock === 0 || selectedSize ==='' || selectedColor === ''} 
+        variant="dark" 
+        onClick={hideOptions}>
+          Agregar al carrito
       </Button>
-      <p className='item-count'>{count}</p>
-      <Button 
-        disabled={stock === 0}
-        variant="outline-dark"
-        onClick={addCount}>
-        +
-      </Button>
-    </div>
+    </>
   );
 };
 

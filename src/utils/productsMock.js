@@ -70,6 +70,18 @@ const productos = [
     color: ['black', 'darkslategrey', 'white', 'darkolivegreen'],
     category: 'remeras',
     id: 6
+  },
+  {
+    title : 'PANTALON BILL BASIC NORTHLAND',
+    price : 41969 ,
+    image : '/7.jpg',
+    sumary : 'El Bill Basic te mantendrá seco a la hora del contacto con la humedad de la nieve.',
+    description: 'Ésta prenda es ideal para ser utilizada sobre sus pantalones de Softshell u otro que le brinden calidez a la hora de sus actividades en la nieve. Confeccionado en membrana técnica y funcional de alta densidad y ser rompeviento te protegerá de los climas más extremos. Sus costuras principales están termoselladas que evitan filtraciones. Su diseño incorpora una elevación en la zona lumbar proveyendo calor a los riñones otorgándole mayor confortabilidad. También cuenta con franjas antideslizantes en ambos dobladillos que lo mantendrá cómodo y seco a lo largo de la jornada.',
+    stock: 2,
+    size: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
+    color: ['black', 'darkslategrey', 'darkslateblue', 'olive'],
+    category: 'pantalones',
+    id: 7
   }
 ];
 

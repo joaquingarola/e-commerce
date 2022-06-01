@@ -1,7 +1,12 @@
 import React from 'react';
 import './ItemColor.css';
 
-const ItemColor = ( {color, selectedColor, selectColor} ) => {
+const ItemColor = ( {color, selectedColor, setSelectedColor} ) => {
+ 
+  const selectColor = (op) => {
+    setSelectedColor(op)
+  };
+
   return(
     <div className='color-list'>
       <h6 className='color-title'>Seleccione color</h6>

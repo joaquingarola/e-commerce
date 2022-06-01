@@ -1,7 +1,12 @@
 import React from 'react';
 import './ItemSize.css';
 
-const ItemSize = ( {size, selectedSize, selectSize} ) => {
+const ItemSize = ( {size, selectedSize, setSelectedSize} ) => {
+  
+  const selectSize = (op) => {
+    setSelectedSize(op)
+  };
+
   return(
     <div className='size-list'>
       <h6 className='size-title'>Seleccione talle</h6>

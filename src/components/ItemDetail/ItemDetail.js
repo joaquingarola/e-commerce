@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount.js';
+import { Link } from 'react-router-dom';
 import { Card, Button} from 'react-bootstrap';
 import ItemSize from '../ItemSize/ItemSize.js';
 import ItemColor from '../ItemColor/ItemColor.js';
@@ -7,16 +8,10 @@ import './ItemDetail.css';
 
 const ItemDetail = ( {item} ) => {
   
-  const [selectedSize, setSelectedSize] = useState('')
-  const [selectedColor, setSelectedColor] = useState('')
-
-  const selectSize = (op) => {
-    setSelectedSize(op)
-  };
-
-  const selectColor = (op) => {
-    setSelectedColor(op)
-  };
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+  const [count, setCount] = useState(item.stock >= 1 ? 1 : 0);
+  const [showOptions, setShowOptions] = useState(true);
 
   return(
     <div className='item-detail'>
@@ -27,21 +22,35 @@ const ItemDetail = ( {item} ) => {
           <Card.Text className="mb-0 card-price">$ {item.price}</Card.Text>
           <Card.Text className="mb-1 card-dues">3 cuotas de $ {(item.price/3).toFixed(2)}</Card.Text>
           <Card.Text>{item.description}</Card.Text>
-          <ItemSize
-            size = {item.size}
-            selectedSize = {selectedSize}
-            selectSize = {selectSize}
-          />
-          <ItemColor
-            color = {item.color}
-            selectedColor = {selectedColor}
-            selectColor = {selectColor}
-          />
-          <ItemCount 
-            stock={item.stock}
-            initial={(item.stock >= 1 ? 1 : item.stock)}
-          />
-          <Button disabled={item.stock === 0} variant="dark">Comprar</Button>
+          {
+            showOptions ?
+              <>
+                <ItemSize
+                  size = {item.size}
+                  selectedSize = {selectedSize}
+                  setSelectedSize = {setSelectedSize}
+                />
+                <ItemColor
+                  color = {item.color}
+                  selectedColor = {selectedColor}
+                  setSelectedColor = {setSelectedColor}
+                />
+                <ItemCount 
+                  stock={item.stock}
+                  initial={item.stock >= 1 ? 1 : 0}
+                  count={count}
+                  setCount={setCount}
+                  setShowOptions={setShowOptions}
+                  selectedSize={selectedSize}
+                  selectedColor={selectedColor}
+                />
+              </>
+            :
+              <div>
+                <h6>Producto agregado al carrito con éxito! </h6>
+                <Button as={Link} to='/cart' variant="dark" className='button-detail'>Finalizar compra</Button>
+              </div>
+          }
         </Card.Body>
       </Card>  
     </div>
