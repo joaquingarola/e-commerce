@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../imagenes/logo.png';
-import Cart from '../Cart/Cart.js'
+import CartWidget from '../CartWidget/CartWidget.js'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -23,7 +23,7 @@ const NavBar = () => {
             <Nav.Link as={Link} to='/Contacto' >Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand href="#Cart" className='p-0'> <Cart /> </Navbar.Brand>
+        <Navbar.Brand as={Link} to='/cart' className='p-0'> <CartWidget /> </Navbar.Brand>
       </Container>
     </Navbar>
   );

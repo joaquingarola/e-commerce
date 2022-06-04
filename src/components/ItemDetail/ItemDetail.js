@@ -43,12 +43,16 @@ const ItemDetail = ( {item} ) => {
                   setShowOptions={setShowOptions}
                   selectedSize={selectedSize}
                   selectedColor={selectedColor}
+                  item={item}
                 />
               </>
             :
               <div>
                 <h6>Producto agregado al carrito con éxito! </h6>
-                <Button as={Link} to='/cart' variant="dark" className='button-detail'>Finalizar compra</Button>
+                <Button as={Link} to='/cart' variant="dark" className='button-detail'>Ir al carrito</Button>
+                <div style={{marginTop:'4px'}}>
+                  <Button as={Link} to='/Productos' variant="dark" className='button-detail'>Seguir comprando</Button>
+                </div>
               </div>
           }
         </Card.Body>

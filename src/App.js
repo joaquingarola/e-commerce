@@ -7,22 +7,25 @@ import Contact from './pages/Contact.js';
 import Home from './pages/Home.js';
 import Products from './pages/Products.js';
 import Cart from './pages/Cart.js';
+import { CartProvider } from './context/CartContext.js';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/Productos' element={<Products />} />
-          <Route path='/item/:id' element={<ItemDetailContainer />} />
-          <Route path='/category/:id' element={<ItemListContainer />} />
-          <Route path='/Contacto' element={<Contact />} />
-          <Route path='/Cart' element={<Cart />} />
-          <Route path='*' element={<h1 style={{textAlign: 'center'}}>404 - Página no encontrada</h1>} />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/Productos' element={<Products />} />
+            <Route path='/item/:id' element={<ItemDetailContainer />} />
+            <Route path='/category/:id' element={<ItemListContainer />} />
+            <Route path='/Contacto' element={<Contact />} />
+            <Route path='/Cart' element={<Cart />} />
+            <Route path='*' element={<h1 style={{textAlign: 'center'}}>404 - Página no encontrada</h1>} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

@@ -1,8 +1,11 @@
 import React from 'react';
+import CartList from '../components/CartList/CartList.js';
 
 const Cart = () => {
   return(
-    <h1 style={{textAlign: 'center'}}>Carrito</h1>
+    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <CartList />
+    </div>
   );
 }
 
