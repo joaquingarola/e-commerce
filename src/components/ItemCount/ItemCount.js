@@ -8,7 +8,7 @@ const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSi
   const { addItemToCart, cartListItem } = useContext(CartContext);
 
   const totalQuantity = () => {
-    const items = cartListItem.filter(cartItem => {return cartItem.idCompra.slice(0,3).includes(item.id.toString())})
+    const items = cartListItem.filter(cartItem => {return cartItem.id === item.id})
     return items.reduce((prevVal, currentVal) =>
       prevVal + currentVal.quantity, 0
     )
