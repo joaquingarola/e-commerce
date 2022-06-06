@@ -54,7 +54,10 @@ const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSi
         disabled={stock === 0 || selectedSize ==='' || selectedColor === '' || totalQuantity() >= stock} 
         variant="dark" 
         onClick={handleAdd}>
-          Agregar al carrito
+          {
+            (stock === 0 ||  totalQuantity() >= stock) ? 'Sin stock' 
+              : (selectedSize === '' || selectedColor === '') ? 'Seleccione talle y color' : 'Agregar al carrito'
+          }
       </Button>
     </>
   );
