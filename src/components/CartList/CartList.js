@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import CartContext from '../../context/CartContext';
 import './CartList.css';
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 const CartList = () => {
-  const { cartListItem, removeItemFromCart, clearCart } = useContext(CartContext);
+  const { cartListItem, removeItemFromCart, clearCart, addCountToItem, removeCountToItem } = useContext(CartContext);
   
   if(Object.keys(cartListItem).length > 0){
     return(
@@ -33,7 +34,11 @@ const CartList = () => {
                 </div>
                 <div className='item-size'>{size}</div>
                 <div className='item-price'>${price}</div>
-                <div className='item-quantity'>{quantity}</div>
+                <div className='item-quantity'>
+                  <FaMinus onClick={() => removeCountToItem(idCompra)} style={{cursor: 'pointer', userSelect: 'none'}} />
+                  {quantity}
+                  <FaPlus onClick={() => addCountToItem(idCompra)} style={{cursor: 'pointer', userSelect: 'none'}} />
+                </div>
                 <div className='item-subtotal'>${quantity*price}</div>
                 <div className='item-delete'><RiDeleteBin6Fill style={{cursor:'pointer'}} onClick={() => removeItemFromCart(idCompra)}/></div>
               </div>

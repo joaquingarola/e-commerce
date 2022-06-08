@@ -27,11 +27,44 @@ const CartProvider = ( {children} ) => {
     return index;
   }
 
+  const addCountToItem = (idCompra) =>{
+    const newList = cartListItem.map((item) => {
+      if(item.idCompra === idCompra){
+        (totalQuantity(item.id)) < item.stock && (item.quantity+=1);
+        return item;
+      } else {
+        return item
+      }
+    });
+    setCartListItem(newList);
+  };
+
+  const totalQuantity = (id) => {
+    const items = cartListItem.filter(cartItem => {return cartItem.id === id})
+    return items.reduce((prevVal, currentVal) =>
+      prevVal + currentVal.quantity, 0
+    )
+  };
+
+  const removeCountToItem = (idCompra) =>{
+    const newList = cartListItem.map((item) => {
+      if(item.idCompra === idCompra){
+        (item.quantity > 1) && (item.quantity-=1);
+        return item;
+      } else {
+        return item
+      }
+    });
+    setCartListItem(newList);
+  };
+
   const data = {
     cartListItem,
     addItemToCart,
     removeItemFromCart,
-    clearCart
+    clearCart,
+    addCountToItem,
+    removeCountToItem
   };
 
   return(
