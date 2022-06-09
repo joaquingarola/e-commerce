@@ -1,11 +1,14 @@
+import React, { useContext } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 import logo from '../../imagenes/logo.png';
 import CartWidget from '../CartWidget/CartWidget.js'
 import './NavBar.css';
 
 const NavBar = () => {
   const categories = ['Buzos', 'Remeras', 'Pantalones']
+  const { cartListItem } = useContext(CartContext);
 
   return(
     <Navbar bg="light" expand="lg" className='pb-0'>
@@ -23,7 +26,11 @@ const NavBar = () => {
             <Nav.Link as={Link} to='/Contacto' >Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand as={Link} to='/cart' className='p-0'> <CartWidget /> </Navbar.Brand>
+        <div style={{width:'10%', height:'40px'}}>
+          {
+            cartListItem.length > 0 && <Navbar.Brand as={Link} to='/cart' className='p-0'> <CartWidget /> </Navbar.Brand>
+          }
+        </div>
       </Container>
     </Navbar>
   );
