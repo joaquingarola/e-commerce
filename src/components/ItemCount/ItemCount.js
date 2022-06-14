@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useContext } from 'react';
 import CartContext from '../../context/CartContext';
 
-const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSize, selectedColor, item}) => {
+const ItemCount = ({ count, setCount, setShowOptions, selectedSize, selectedColor, item}) => {
 
   const { addItemToCart, cartListItem } = useContext(CartContext);
 
@@ -16,14 +16,14 @@ const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSi
 
   const addCount = () => {
     if(Object.keys(cartListItem).length === 0){
-      count < stock && setCount(prev => prev + 1);
+      count < item.stock && setCount(prev => prev + 1);
     } else {
-      (count + totalQuantity()) < stock && setCount(prev => prev + 1);
+      (count + totalQuantity()) < item.stock && setCount(prev => prev + 1);
     }
   };
 
   const removeCount = () => {
-    count > initial && setCount(prev => prev - 1);
+    count > 1 && setCount(prev => prev - 1);
   };
 
   const handleAdd = () => {
@@ -35,27 +35,27 @@ const ItemCount = ({ stock, initial, count, setCount, setShowOptions, selectedSi
     <>
       <div className='item-count-container'>
         <Button 
-          disabled={stock === 0 || totalQuantity() >= stock}
+          disabled={item.stock === 0 || totalQuantity() >= item.stock}
           variant="outline-dark"
           onClick={removeCount}>
             -
         </Button>
         <p className='item-count'>
-          {totalQuantity() >= stock ? 0 : count} 
+          {totalQuantity() >= item.stock ? 0 : count} 
         </p>
         <Button 
-          disabled={stock === 0 || totalQuantity() >= stock}
+          disabled={item.stock === 0 || totalQuantity() >= item.stock}
           variant="outline-dark"
           onClick={addCount}>
             +
         </Button>
       </div>
       <Button 
-        disabled={stock === 0 || selectedSize ==='' || selectedColor === '' || totalQuantity() >= stock} 
+        disabled={item.stock === 0 || selectedSize ==='' || selectedColor === '' || totalQuantity() >= item.stock} 
         variant="dark" 
         onClick={handleAdd}>
           {
-            (stock === 0 ||  totalQuantity() >= stock) ? 'Sin stock' 
+            (item.stock === 0 ||  totalQuantity() >= item.stock) ? 'Sin stock' 
               : (selectedSize === '' || selectedColor === '') ? 'Seleccione talle y color' : 'Agregar al carrito'
           }
       </Button>

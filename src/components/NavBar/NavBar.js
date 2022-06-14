@@ -8,7 +8,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   const categories = ['Buzos', 'Remeras', 'Pantalones']
-  const { cartListItem } = useContext(CartContext);
+  const { cartListItem, cartTotalQuantity } = useContext(CartContext);
 
   return(
     <Navbar bg="light" expand="lg" className='pb-0'>
@@ -26,9 +26,15 @@ const NavBar = () => {
             <Nav.Link as={Link} to='/Contacto' >Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <div style={{width:'10%', height:'40px'}}>
+        <div style={{width:'10%', height:'40px', position:'relative'}}>
           {
-            cartListItem.length > 0 && <Navbar.Brand as={Link} to='/cart' className='p-0'> <CartWidget /> </Navbar.Brand>
+            cartListItem.length > 0 && 
+              <Navbar.Brand as={Link} to='/cart' className='p-0'> 
+                <CartWidget /> 
+                <div className='cart-count-container'>
+                  <p className='cart-count'>{cartTotalQuantity}</p>
+                </div>
+              </Navbar.Brand>
           }
         </div>
       </Container>

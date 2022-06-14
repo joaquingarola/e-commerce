@@ -36,8 +36,6 @@ const ItemDetail = ( {item} ) => {
                   setSelectedColor = {setSelectedColor}
                 />
                 <ItemCount 
-                  stock={item.stock}
-                  initial={item.stock >= 1 ? 1 : 0}
                   count={count}
                   setCount={setCount}
                   setShowOptions={setShowOptions}

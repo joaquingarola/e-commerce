@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 const CartList = () => {
-  const { cartListItem, removeItemFromCart, clearCart, addCountToItem, removeCountToItem } = useContext(CartContext);
+  const { cartListItem, removeItemFromCart, clearCart, addCountToItem, removeCountToItem, cartTotalQuantity } = useContext(CartContext);
   
   if(Object.keys(cartListItem).length > 0){
     return(
@@ -48,13 +48,7 @@ const CartList = () => {
         <div className='cart-footer-container'>
           <div className='footer-title'>Total</div>
           <div className='total-quantity'> 
-            {
-              Object.keys(cartListItem).reduce(
-                (prevVal, currentVal) =>
-                  prevVal + +cartListItem[currentVal].quantity,
-                0
-              )
-            }
+            { cartTotalQuantity }
           </div>
           <div className='total-price'>$ 
             {

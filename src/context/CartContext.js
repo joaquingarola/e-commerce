@@ -5,6 +5,7 @@ const CartContext = createContext();
 const CartProvider = ( {children} ) => {
 
   const [cartListItem, setCartListItem] = useState([]);
+  const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
   
   const addItemToCart = (item) => {
     let index = findItem(item);
@@ -12,14 +13,18 @@ const CartProvider = ( {children} ) => {
       setCartListItem(cartListItem => [...cartListItem, item])
     :
       cartListItem[index].quantity += item.quantity;
+    setCartTotalQuantity(prev => prev + item.quantity);
   };
 
   const removeItemFromCart = (idCompra) => {
-    setCartListItem(cartListItem.filter( (p) => { return p.idCompra !== idCompra }))
+    const item = cartListItem.find( (i) => { return i.idCompra === idCompra })
+    setCartTotalQuantity(prev => prev - item.quantity);
+    setCartListItem(cartListItem.filter( (i) => { return i.idCompra !== idCompra }));
   };
 
   const clearCart = () => {
     setCartListItem([]);
+    setCartTotalQuantity(0);
   }
 
   const findItem = (item) =>{
@@ -30,7 +35,10 @@ const CartProvider = ( {children} ) => {
   const addCountToItem = (idCompra) =>{
     const newList = cartListItem.map((item) => {
       if(item.idCompra === idCompra){
-        (totalQuantity(item.id)) < item.stock && (item.quantity+=1);
+        if(itemTotalQuantity(item.id) < item.stock) {
+          (item.quantity+=1);
+          setCartTotalQuantity(prev => prev + 1);
+        }
         return item;
       } else {
         return item
@@ -39,7 +47,7 @@ const CartProvider = ( {children} ) => {
     setCartListItem(newList);
   };
 
-  const totalQuantity = (id) => {
+  const itemTotalQuantity = (id) => {
     const items = cartListItem.filter(cartItem => {return cartItem.id === id})
     return items.reduce((prevVal, currentVal) =>
       prevVal + currentVal.quantity, 0
@@ -49,7 +57,10 @@ const CartProvider = ( {children} ) => {
   const removeCountToItem = (idCompra) =>{
     const newList = cartListItem.map((item) => {
       if(item.idCompra === idCompra){
-        (item.quantity > 1) && (item.quantity-=1);
+        if(item.quantity > 1) {
+          (item.quantity-=1);
+          setCartTotalQuantity(prev => prev - 1);
+        }
         return item;
       } else {
         return item
@@ -64,7 +75,8 @@ const CartProvider = ( {children} ) => {
     removeItemFromCart,
     clearCart,
     addCountToItem,
-    removeCountToItem
+    removeCountToItem,
+    cartTotalQuantity
   };
 
   return(
