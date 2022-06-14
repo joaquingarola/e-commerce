@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getItem } from '../../utils/productsMock.js';
 import Loader from '../Loader/Loader.js';
+import { doc, getDoc } from "firebase/firestore";
+import db from '../../utils/firebaseConfig';
 import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
@@ -14,15 +15,27 @@ const ItemDetailContainer = () => {
 
   useEffect( () => {
     setLoader(true);
-    getItem(id)
+    getProduct()
     .then( (response) => {
       (response === undefined) ? navigate('/notFound') : setProduct(response);
-      setLoader(false);
     })
     .catch( (err) => {
-      /* console.log("Error: ", err) */
+      console.log("Error: ", err)
+    })
+    .finally(() => {
+      setLoader(false);
     })
   }, [id])
+
+  const getProduct = async () =>{
+    const docRef = doc(db, 'productos', id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        let product = docSnap.data();
+        product.id = docSnap.id;
+        return(product);
+    }
+  }
   
   if(loader) {
     return(
