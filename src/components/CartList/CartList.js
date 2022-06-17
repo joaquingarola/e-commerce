@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import CartContext from '../../context/CartContext';
-import CartModal from '../CartModal/CartModal.js';
 import './CartList.css';
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaMinus, FaPlus } from "react-icons/fa";
@@ -8,12 +7,8 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-const CartList = () => {
+const CartList = ({ handleShow }) => {
   const { cartListItem, removeItemFromCart, clearCart, addCountToItem, removeCountToItem, cartTotalQuantity, totalPrice } = useContext(CartContext);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
   
   if(Object.keys(cartListItem).length > 0){
     return(
@@ -79,18 +74,13 @@ const CartList = () => {
             </div>
           </div>
         </div>
-        <CartModal 
-          showModal= {showModal}
-          handleClose= {handleClose}
-          handleShow= {handleShow}
-        />
       </>
     )
   } else{
     return(
       <>
         <h5 style={{marginTop: '50px'}}>Tu carrito está vacío.</h5>
-        <Button variant='dark' as={Link} to='/Productos'>
+        <Button variant='dark' as={Link} to='/'>
           Ver productos
         </Button>
       </>
