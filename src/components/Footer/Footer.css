@@ -1,0 +1,33 @@
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background-color: rgba(248,249,250);
+  border-top: 1px solid rgb(231, 231, 231)
+}
+
+.right-container {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.icon-container {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.icon {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.icon:hover{
+  opacity: 0.8;
+}
+
+.icon-container > a:link, .icon-container > a:visited, .icon-container > a:active {
+  text-decoration:none;
+  color: black;
+}

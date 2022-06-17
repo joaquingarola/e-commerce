@@ -24,7 +24,7 @@ const CartModalTicket = ({ showModal, formValue, success}) => {
         </div>
         <h4 style={{textAlign: 'center', margin:'10px'}}>Su compra ha sido procesada con éxito.</h4>
         <div style={{textAlign: 'center', margin: '20px 0'}}>
-          <p><span style={{fontWeight: '500'}}>Nro de orden:</span> {success}</p>
+          <p><span style={{fontWeight: '500'}}>ID de orden:</span> {success}</p>
           <p><span style={{fontWeight: '500'}}>Valor total:</span> ${totalPrice}</p>
           <p><span style={{fontWeight: '500'}}>Comprador:</span> {formValue.name}</p>
         </div>
