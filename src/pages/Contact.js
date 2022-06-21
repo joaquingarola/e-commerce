@@ -1,8 +1,9 @@
 import React from 'react';
+import ContactView from '../components/ContactView/ContactView';
 
 const Contact = () => {
   return(
-    <h1 style={{textAlign: 'center'}}>Contacto</h1>
+    <ContactView />
   );
 }
 
