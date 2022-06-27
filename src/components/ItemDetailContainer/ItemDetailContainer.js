@@ -40,7 +40,7 @@ const ItemDetailContainer = () => {
   if(loader) {
     return(
       <Loader 
-        h = '500' 
+        h = '550' 
       />
     );
   } else {

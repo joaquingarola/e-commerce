@@ -8,6 +8,7 @@ This project is being developed while I'm taking a ReactJS course in CoderHouse.
 - react-icons (v4.3.1): allows to use icons.
 - react-router-dom (v6.3.0): allows to navigate through the components.
 - firebase (v9.8.3): works like a database.
+- emailjs-com: (v3.2.0): allows to send emails.
 
 ## Project Status
 
