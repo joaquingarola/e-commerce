@@ -27,6 +27,7 @@ npm start
 
 ## Example of using
 
-![Example gif](https://s8.gifyu.com/images/asd4203f0704c1e1ef6.gif)
+![Example gif](https://user-images.githubusercontent.com/98132472/176050183-658ea922-8e63-4cb2-a422-e44989ce4b0f.gif)
+
 
 
