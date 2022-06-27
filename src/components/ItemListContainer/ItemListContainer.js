@@ -65,7 +65,9 @@ const ItemListContainer = ({ title }) => {
 
   if (loader) {
     return(
-      <Loader />
+      <Loader 
+        h = '500' 
+      />
     );
   } else {
     return(

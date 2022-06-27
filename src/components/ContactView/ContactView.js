@@ -3,23 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { GrMailOption, GrMapLocation, GrPhone } from 'react-icons/gr';
 import ContactForm from '../ContactForm/ContactForm.js';
 import ContactModal from '../ContactModal/ContactModal.js';
-import { addDoc, collection } from 'firebase/firestore';
-import db from '../../utils/firebaseConfig';
 import './ContactView.css';
 
 const ContactView = () => {
   const [showModal, setShowModal] = useState(false);
+  const [contactLoader, setContactLoader] = useState(true);
   const navigate = useNavigate();
-
-  const saveData = async (newContact) => {
-    const contactFirebase = collection(db, 'mensajes');
-    const contactDoc = await addDoc(contactFirebase, newContact);
-    handleShow();
-    /* setSuccess(contactDoc.id); */
-  };
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+  const handleLoader = () => setContactLoader(false);
 
   const finishContact = () => {
     handleClose();
@@ -46,13 +39,17 @@ const ContactView = () => {
       <div className='form-container'>
         <ContactForm 
           handleShow = {handleShow}
-          saveData = {saveData}
+          handleLoader = {handleLoader}
+          Loader = {contactLoader}
         />
       </div>
-      <ContactModal 
-        showModal = {showModal}
-        finishContact = {finishContact}
-      />
+      <div>
+        <ContactModal 
+          contactLoader = {contactLoader}
+          showModal = {showModal}
+          finishContact = {finishContact}
+        />
+      </div>
     </div>
   );
 }

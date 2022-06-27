@@ -1,7 +1,8 @@
 import { Form, Button} from 'react-bootstrap';
 import React, { useState } from 'react';
+import { send } from 'emailjs-com';
 
-const ContactForm = ({ saveData }) => {
+const ContactForm = ({ handleShow, handleLoader, Loader }) => {
   const [formValue, setFormValue] = useState({
     name: '',
     email: '',
@@ -15,7 +16,21 @@ const ContactForm = ({ saveData }) => {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      saveData({contact: formValue});
+      
+      handleShow();
+      send(
+        'contact_service2',
+        'template_hw28o5b',
+        formValue,
+        '6FH82rQxIzYDxkGxR'
+      )
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          handleLoader();
+        })
+        .catch((err) => {
+          console.log('Error...', err);
+        });
     }
     setValidated(true);
   };
