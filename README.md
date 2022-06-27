@@ -25,4 +25,8 @@ npm i
 npm start
 ```
 
+## Example of using
+
+![Example gif](https://s8.gifyu.com/images/asd4203f0704c1e1ef6.gif)
+
 
